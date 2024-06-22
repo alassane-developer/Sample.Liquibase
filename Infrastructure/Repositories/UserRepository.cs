@@ -48,6 +48,15 @@ namespace Infrastructure.Repositories
             return await Connection.QueryFirstOrDefaultAsync<User>(query, new { id });
         }
 
+        public async Task<IEnumerable<User>> GetAll()
+        {
+            var query = new QueryBuilder()
+                .Select("*")
+                .From(_table)
+                .Build();
+            return await Connection.QueryAsync<User>(query);
+        }
+
         public async Task Update(User user)
         {
             var query = new QueryBuilder()

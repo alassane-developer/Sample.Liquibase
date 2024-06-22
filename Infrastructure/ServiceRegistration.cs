@@ -9,7 +9,7 @@ namespace Infrastructure;
 
 public static class ServiceRegistration
 {
-    public static IServiceCollection RegisterServices(IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection RegisterInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
     {
         return services
             .AddScoped<IDbConnection>(_ => new SqlConnection(connectionString: configuration.GetConnectionString("DbConnection")))

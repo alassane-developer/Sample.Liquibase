@@ -4,7 +4,7 @@ namespace Core;
 
 public static class ServiceRegistration
 {
-    public static IServiceCollection RegisterServices(IServiceCollection services)
+    public static IServiceCollection RegisterCoreServices(this IServiceCollection services)
     {
         return services.AddMediatR(config => config.RegisterServicesFromAssembly(typeof(ServiceRegistration).Assembly));
     }
