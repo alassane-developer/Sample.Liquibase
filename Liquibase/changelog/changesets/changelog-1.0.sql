@@ -1,7 +1,7 @@
--- changelog-1.0.sql
+--liquibase formatted sql
 
--- Changeset ID: 1, Author: alassane
--- Creating table 'users'
+-- changeset alassane:1
+-- comment: Creating users table
 
 CREATE TABLE users
 (
