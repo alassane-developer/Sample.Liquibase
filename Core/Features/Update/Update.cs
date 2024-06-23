@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Core.Features.Update;
 
-public record UpdateUserCommand(Guid Id, string Name, string FirstName, DateOnly BirthDate) : User(Id, Name, FirstName, BirthDate), IRequest;
+public record UpdateUserCommand(Guid Id, string Name, string FirstName, DateTime BirthDate) : User(Id, Name, FirstName, BirthDate), IRequest;
 
 internal sealed class UpdateUserCommandHandler(IUserRepository repository) : IRequestHandler<UpdateUserCommand>
 {

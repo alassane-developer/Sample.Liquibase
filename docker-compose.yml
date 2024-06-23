@@ -1,0 +1,25 @@
+﻿version: '3.8'
+services:
+  web:
+    image: aspnetdockerpostgres
+    build:
+      context: .
+      dockerfile: Api/Dockerfile
+    ports:
+      - "5000:8080"
+    depends_on:
+      - db
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__Default=Username=admin;Password=1234567890;Host=db;Port=5432;Database=SampleLiquibaseDB
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: 1234567890
+      POSTGRES_DB: SampleLiquibaseDB
+    ports:
+      - 5433:5432
+    volumes:
+      - ./data:/var/lib/postgresql/data

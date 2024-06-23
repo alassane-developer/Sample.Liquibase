@@ -2,8 +2,8 @@
 using Infrastructure.Repositories;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Npgsql;
 using System.Data;
-using System.Data.SqlClient;
 
 namespace Infrastructure;
 
@@ -12,7 +12,7 @@ public static class ServiceRegistration
     public static IServiceCollection RegisterInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
     {
         return services
-            .AddScoped<IDbConnection>(_ => new SqlConnection(connectionString: configuration.GetConnectionString("DbConnection")))
+            .AddScoped<IDbConnection>(_ => new NpgsqlConnection(configuration.GetConnectionString("Default")))
             .AddScoped<IUserRepository, UserRepository>();
     }
 }

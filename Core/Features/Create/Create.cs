@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Core.Features.Create;
 
-public record CreateUserCommand(string Name, string FirstName, DateOnly BirthDate) : IRequest;
+public record CreateUserCommand(string Name, string FirstName, DateTime BirthDate) : IRequest;
 
 internal sealed class CreateUserCommandHandler(IUserRepository repository) : IRequestHandler<CreateUserCommand>
 {
